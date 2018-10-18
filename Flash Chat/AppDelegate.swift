@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //TODO: Initialise and Configure your Firebase here:
+        // first launch your app >> first file that get call to use is appdelegate << thispart get caught before everything
+        FirebaseApp.configure()
         
+        let myDatabase = Database.database().reference()
+        myDatabase.setValue("WE've got data!")
         
         return true
     }
